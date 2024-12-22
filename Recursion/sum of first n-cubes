@@ -1,1 +1,23 @@
 
+class Solution {
+  public:
+  
+  int solve(int i,int n)
+  {
+      if(i>n) return 0;
+      
+      return (i*i*i) + solve(i+1,n);
+      
+  }
+  int cube(int n)
+  {
+      int i=1;
+      return solve(i,n);
+  }
+    int sumOfSeries(int n) {
+        // code here
+        
+        return cube(n);
+    }
+    
+};
