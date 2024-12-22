@@ -1,23 +1,17 @@
-
 class Solution {
   public:
   
-  int solve(int i,int n)
+  void solve(vector<int> &arr,int i,int n)
   {
-      if(i>n) return 0;
+      if(i>=n/2) return;
       
-      return (i*i*i) + solve(i+1,n);
-      
+      swap(arr[i],arr[n-i-1]);
+      solve(arr,i+1,n);
   }
-  int cube(int n)
-  {
-      int i=1;
-      return solve(i,n);
-  }
-    int sumOfSeries(int n) {
+    void reverseArray(vector<int> &arr) {
         // code here
-        
-        return cube(n);
+        int n=arr.size();
+        int i=0;
+        solve(arr,i,n);
     }
-    
 };
