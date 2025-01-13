@@ -1,0 +1,22 @@
+class Solution {
+public:
+
+    int frogJump(int n,vector<int>&nums,int i,int last,int target,vector<int>&dp)
+    {
+        if(i==n-1) return 0;
+        if(dp[i]!=INT_MIN) return dp[i];
+        int res=-1;
+        for(int j=i+1;j<n;j++){
+            if(abs(nums[j]-last)<=target){
+                int t = frogJump(n,nums, j, nums[j],target, dp);
+                if(t != -1) res = max(res, 1 + t );
+            }
+        }
+        return dp[i] = res;
+    }
+    int maximumJumps(vector<int>& nums, int target) {
+        int n = nums.size();
+        vector<int> dp(n,INT_MIN);
+        return frogJump(n,nums,0,nums[0],target,dp);
+    }
+};
